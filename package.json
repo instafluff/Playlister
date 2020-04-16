@@ -1,0 +1,31 @@
+{
+  "name": "playlister",
+  "version": "1.0.0",
+  "description": "Automatically compile YouTube links into a playlist!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/instafluff/Playlister.git"
+  },
+  "keywords": [
+    "Playlist",
+    "YouTube",
+    "Music",
+    "Songs",
+    "Genre",
+    "Listen",
+    "Instafluff"
+  ],
+  "author": "Instafluff",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/instafluff/Playlister/issues"
+  },
+  "homepage": "https://github.com/instafluff/Playlister#readme",
+  "dependencies": {
+    "webwebweb": "^1.2.0"
+  }
+}

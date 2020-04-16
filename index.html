@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>Playlist</title>
+		<script src="https://cdn.jsdelivr.net/npm/comfy.js@latest/dist/comfy.min.js"></script>
+	</head>
+	<body>
+		<img id="album-thumb" src=""/>
+		<h1 id="album-title"></h1>
+		<script>
+			ComfyJS.onChat = async ( user, message, flags, self, extra ) => {
+				console.log( `${user}: ${message}` );
+				let videoId = extraYouTubeVideoID( message );
+				if( videoId ) {
+					console.log( videoId );
+					let result = await fetch( `https://cors-anywhere.herokuapp.com/https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json` )
+						.then( r => r.json() );
+					console.log( result );
+					document.querySelector( "#album-title" ).innerText = result.title;
+					document.querySelector( "#album-thumb" ).setAttribute( "src", result.thumbnail_url );
+				}
+		    }
+			ComfyJS.Init( "instafluff" );
+
+			function extraYouTubeVideoID( text ) {
+				let regex = /((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?/g;
+				let matches = [ ...text.matchAll( regex ) ];
+				let videoId = matches.length > 0 ? matches[ 0 ][ 5 ] : "";
+				return videoId;
+			}
+		</script>
+	</body>
+</html>
